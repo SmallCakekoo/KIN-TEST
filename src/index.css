@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+  --night: #1C1F2A;
+  --night-rgb: 28, 31, 42;
+  --selva: #314A3E;
+  --selva-rgb: 49, 74, 62;
+  --selva-light: #EAF0EC;
+  --dorado: #C5A96A;
+  --dorado-rgb: 197, 169, 106;
+  --perg: #E7DDCF;
+  --lino: #F7F4EF;
+  --white: #FFFFFF;
+  --success: #3A7D55;
+  --warn: #C4861A;
+  --danger: #B84040;
+  --text-mid: #4A5060;
+  --text-light: #8A8F9A;
+  --border: #DDD8CE;
+  
+  /* Modern Identity Extensions */
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 2px 8px rgba(28, 31, 42, 0.04);
+  --shadow-md: 0 8px 24px rgba(28, 31, 42, 0.08);
+  --shadow-lg: 0 16px 40px rgba(28, 31, 42, 0.12);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--night);
+  background-color: var(--lino);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--lino);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Global Reset Tweaks */
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 767px) {
+  #root {
+    max-width: 450px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px rgba(0,0,0,0.05);
+    background-color: var(--white);
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-light);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

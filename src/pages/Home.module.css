@@ -1,0 +1,118 @@
+.container {
+  padding-bottom: 100px;
+  animation: fadeIn var(--transition-smooth);
+}
+
+.criticalAlert {
+  background-color: var(--danger);
+  color: white;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -16px 24px -16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.heroCard {
+  background: linear-gradient(135deg, var(--night) 0%, #2a3040 100%);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  color: white;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+}
+
+.heroTitle {
+  color: white;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 280px;
+  margin: 0;
+  z-index: 1;
+}
+
+.logoWatermark {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  transition: transform var(--transition-smooth);
+}
+
+.heroCard:hover .logoWatermark {
+  transform: rotate(-5deg) scale(1.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.callButton {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  background-color: var(--selva);
+  color: white;
+  padding: 16px 28px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 12px 24px rgba(49, 74, 62, 0.3);
+  z-index: 100;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.callButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(49, 74, 62, 0.4);
+  background-color: #3b5a4b;
+}
+
+.callButton span {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .heroCard {
+    padding: 60px 48px;
+  }
+
+  .heroTitle {
+    font-size: 40px;
+    max-width: 400px;
+  }
+
+  .callButton {
+    bottom: 40px;
+    right: 40px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
