@@ -51,7 +51,15 @@ export const ALL_SCENARIOS = [
     _layerId: "environment",
     _layer: LAYERS.environment,
     _narrativeText: "Manuel está teniendo una mañana maravillosa. Tomó sus medicamentos a tiempo y ya ha alcanzado la mitad de su meta de pasos. La casa está tranquila y sus signos vitales son estables.",
-    indicators: baseIndicators.map(ind => ({ ...ind, status: 'success', text: 'Excelente', detail: 'Dentro de los rangos' })),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'meds') return { ...ind, status: 'success', text: '3/3 tomadas', detail: 'Todo a tiempo' };
+      if (ind.id === 'bp') return { ...ind, status: 'success', text: '120/80 mmHg', detail: 'Rango ideal' };
+      if (ind.id === 'glucose') return { ...ind, status: 'success', text: '5.4 mmol/L', detail: 'Estable' };
+      if (ind.id === 'activity') return { ...ind, status: 'success', text: '6,230 pasos', detail: 'Meta superada' };
+      if (ind.id === 'sleep') return { ...ind, status: 'success', text: '8h 15min', detail: 'Sueño reparador' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'success', text: 'Hidratado', detail: '2.1L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: Array(7).fill(0).map((_, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: 100 })),
@@ -66,9 +74,15 @@ export const ALL_SCENARIOS = [
     _layerId: "medical",
     _layer: LAYERS.medical,
     _narrativeText: "El dispensador MedMinder parpadea, pero Manuel no responde. El sistema ha enviado una vibración a su bastón. Manuel puede usar el botón 'Posponer' en el mango para avisar que lo tomará en 15 minutos.",
-    indicators: baseIndicators.map(ind => 
-      ind.id === 'meds' ? { ...ind, status: 'warn', text: 'Dosis pendiente', detail: 'Recordatorio enviado' } : { ...ind, status: 'success', text: 'Normal' }
-    ),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'meds') return { ...ind, status: 'warn', text: 'Dosis pendiente', detail: 'Recordatorio enviado' };
+      if (ind.id === 'bp') return { ...ind, status: 'success', text: '125/82 mmHg', detail: 'Normal' };
+      if (ind.id === 'glucose') return { ...ind, status: 'success', text: '6.1 mmol/L', detail: 'Estable' };
+      if (ind.id === 'activity') return { ...ind, status: 'success', text: '2,105 pasos', detail: 'En progreso' };
+      if (ind.id === 'sleep') return { ...ind, status: 'success', text: '7h 10min', detail: 'Normal' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'success', text: 'Hidratado', detail: '1.5L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: [100, 100, 100, 66, 100, 100, 100].map((p, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: p })),
@@ -85,9 +99,15 @@ export const ALL_SCENARIOS = [
     _layerId: "contextual",
     _layer: LAYERS.contextual,
     _narrativeText: "Han pasado 15 minutos. Manuel está en el jardín y parece haber ignorado la vibración. No pulsó 'Pausar' ni 'Posponer'. El sistema está aumentando la intensidad de la alerta visual en casa.",
-    indicators: baseIndicators.map(ind => 
-      ind.id === 'meds' ? { ...ind, status: 'warn', text: '1 dosis omitida', detail: 'Escalando alerta' } : { ...ind, status: 'success', text: 'Normal' }
-    ),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'meds') return { ...ind, status: 'warn', text: '1 dosis omitida', detail: 'Escalando alerta' };
+      if (ind.id === 'bp') return { ...ind, status: 'success', text: '130/85 mmHg', detail: 'Leve aumento' };
+      if (ind.id === 'glucose') return { ...ind, status: 'warn', text: '7.2 mmol/L', detail: 'Elevado' };
+      if (ind.id === 'activity') return { ...ind, status: 'success', text: '2,450 pasos', detail: 'Normal' };
+      if (ind.id === 'sleep') return { ...ind, status: 'success', text: '6h 45min', detail: 'Normal' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'success', text: 'Hidratado', detail: '1.4L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: [100, 100, 100, 33, 100, 100, 100].map((p, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: p })),
@@ -104,9 +124,15 @@ export const ALL_SCENARIOS = [
     _layerId: "notifications",
     _layer: LAYERS.notifications,
     _narrativeText: "La ventana para la medicación se ha cerrado. Manuel aún no ha tomado su dosis. Se te ha enviado una alerta crítica, Laura, para que contactes con él y verifiques que se encuentra bien.",
-    indicators: baseIndicators.map(ind => 
-      ind.id === 'meds' ? { ...ind, status: 'danger', text: 'CRÍTICO: Dosis perdida', detail: 'Laura notificada' } : { ...ind, status: 'success', text: 'Normal' }
-    ),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'meds') return { ...ind, status: 'danger', text: 'CRÍTICO: Perdida', detail: 'Laura notificada' };
+      if (ind.id === 'bp') return { ...ind, status: 'warn', text: '145/95 mmHg', detail: 'Hipertensión detectada' };
+      if (ind.id === 'glucose') return { ...ind, status: 'danger', text: '9.4 mmol/L', detail: 'Pico crítico' };
+      if (ind.id === 'activity') return { ...ind, status: 'success', text: '1,102 pasos', detail: 'Bajo' };
+      if (ind.id === 'sleep') return { ...ind, status: 'warn', text: '4h 20min', detail: 'Mala calidad' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'warn', text: 'Baja', detail: '0.9L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: [100, 100, 100, 0, 100, 100, 100].map((p, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: p })),
@@ -124,9 +150,13 @@ export const ALL_SCENARIOS = [
     _layer: LAYERS.contextual,
     _narrativeText: "Manuel ha estado muy quieto hoy. No salió a su caminata matutina habitual y su calidad de sueño fue baja anoche. ¿Quizás una llamada rápida podría animarle un poco?",
     indicators: baseIndicators.map(ind => {
-      if (ind.id === 'activity') return { ...ind, status: 'warn', text: '850 pasos', detail: 'Muy por debajo del promedio' };
-      if (ind.id === 'sleep') return { ...ind, status: 'warn', text: '5h 10min', detail: 'Ciclos de sueño interrumpidos' };
-      return { ...ind, status: 'success', text: 'Estable' };
+      if (ind.id === 'meds') return { ...ind, status: 'success', text: '3/3 tomadas', detail: 'Normal' };
+      if (ind.id === 'bp') return { ...ind, status: 'success', text: '122/80 mmHg', detail: 'Normal' };
+      if (ind.id === 'glucose') return { ...ind, status: 'success', text: '5.8 mmol/L', detail: 'Normal' };
+      if (ind.id === 'activity') return { ...ind, status: 'warn', text: '850 pasos', detail: 'Sedentario' };
+      if (ind.id === 'sleep') return { ...ind, status: 'warn', text: '5h 10min', detail: 'Interrumpido' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'warn', text: 'Baja', detail: '0.8L hoy' };
+      return { ...ind, status: 'success' };
     }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
@@ -144,9 +174,15 @@ export const ALL_SCENARIOS = [
     _layerId: "notifications",
     _layer: LAYERS.notifications,
     _narrativeText: "Manuel ha presionado el botón de emergencia en su bastón inteligente. Se encuentra en el pasillo y necesita asistencia inmediata. Por favor, contacta con emergencias.",
-    indicators: baseIndicators.map(ind => 
-      ind.id === 'activity' ? { ...ind, status: 'danger', text: 'EMERGENCIA ACTIVADA', detail: 'Botón de pánico pulsado' } : { ...ind, status: 'success' }
-    ),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'activity') return { ...ind, status: 'danger', text: 'FALLA DETECTADA', detail: 'Botón de pánico' };
+      if (ind.id === 'bp') return { ...ind, status: 'danger', text: '160/105 mmHg', detail: 'CRÍTICO' };
+      if (ind.id === 'meds') return { ...ind, status: 'success', text: '3/3 tomadas', detail: 'Normal' };
+      if (ind.id === 'glucose') return { ...ind, status: 'success', text: '6.2 mmol/L', detail: 'Normal' };
+      if (ind.id === 'sleep') return { ...ind, status: 'success', text: '7h 20min', detail: 'Normal' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'success', text: 'Normal', detail: '2.0L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: Array(7).fill(100).map((p, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: p })),
@@ -163,9 +199,15 @@ export const ALL_SCENARIOS = [
     _layerId: "nutrition",
     _layer: LAYERS.nutrition,
     _narrativeText: "El sistema ha detectado que la medicación para el corazón de Manuel se está agotando. Solo quedan 5 días de dosis. Ya se ha tramitado el pedido de renovación en la farmacia.",
-    indicators: baseIndicators.map(ind => 
-      ind.id === 'meds' ? { ...ind, status: 'warn', text: 'Suministro bajo', detail: 'Quedan 5 días' } : { ...ind, status: 'success' }
-    ),
+    indicators: baseIndicators.map(ind => {
+      if (ind.id === 'meds') return { ...ind, status: 'warn', text: 'Suministro bajo', detail: 'Quedan 5 días' };
+      if (ind.id === 'bp') return { ...ind, status: 'success', text: '124/82 mmHg', detail: 'Normal' };
+      if (ind.id === 'glucose') return { ...ind, status: 'success', text: '6.0 mmol/L', detail: 'Normal' };
+      if (ind.id === 'activity') return { ...ind, status: 'success', text: '4,500 pasos', detail: 'Normal' };
+      if (ind.id === 'sleep') return { ...ind, status: 'success', text: '7h 30min', detail: 'Normal' };
+      if (ind.id === 'nutrition') return { ...ind, status: 'success', text: 'Normal', detail: '1.8L hoy' };
+      return { ...ind, status: 'success' };
+    }),
     weeklySummary: {
       period: "13 Abr - 19 Abr",
       medicationAdherence: Array(7).fill(100).map((p, i) => ({ day: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'][i], percentage: p })),
