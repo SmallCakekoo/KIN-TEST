@@ -5,6 +5,11 @@ import styles from './Alerts.module.css';
 const Alerts = ({ data }) => {
   const [alerts, setAlerts] = useState(data.alerts);
   
+  // Sync state when data.alerts changes (from scenarios)
+  React.useEffect(() => {
+    setAlerts(data.alerts);
+  }, [data.alerts]);
+  
   const toggleResolved = (id) => {
     setAlerts(alerts.map(a => a.id === id ? { ...a, resolved: !a.resolved } : a));
   };
@@ -22,13 +27,13 @@ const Alerts = ({ data }) => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.sectionTitle}>Notifications</h3>
+      <h3 className={styles.sectionTitle}>Notificaciones</h3>
       
       {alerts.length === 0 ? (
         <div className={styles.emptyState}>
           <CheckCircle size={56} className={styles.emptyIcon} />
-          <h4 className={styles.emptyTitle}>All clear</h4>
-          <p className={styles.emptyText}>No active alerts for Manuel.</p>
+          <h4 className={styles.emptyTitle}>Todo al día</h4>
+          <p className={styles.emptyText}>No hay alertas activas para Manuel.</p>
         </div>
       ) : (
         <>
@@ -61,7 +66,7 @@ const Alerts = ({ data }) => {
           
           {resolvedAlerts.length > 0 && (
             <div className={styles.resolvedSectionHeader}>
-              Resolved recently
+              Resueltas recientemente
             </div>
           )}
           

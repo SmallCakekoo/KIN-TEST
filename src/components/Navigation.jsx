@@ -5,13 +5,13 @@ import KinLogo from "./KinLogo";
 import styles from "./Navigation.module.css";
 
 const tabs = [
-  { id: "home", path: "/", icon: Home, label: "Home" },
-  { id: "week", path: "/week", icon: BarChart2, label: "Week" },
-  { id: "alerts", path: "/alerts", icon: Bell, label: "Alerts" },
-  { id: "settings", path: "/settings", icon: Settings, label: "Settings" },
+  { id: "home", path: "/", icon: Home, label: "Inicio" },
+  { id: "week", path: "/week", icon: BarChart2, label: "Semanal" },
+  { id: "alerts", path: "/alerts", icon: Bell, label: "Alertas" },
+  { id: "settings", path: "/settings", icon: Settings, label: "Ajustes" },
 ];
 
-const Navigation = ({ hasRedAlerts }) => {
+const Navigation = ({ hasRedAlerts, onLogoClick }) => {
   return (
     <>
       {/* Mobile Bottom Navigation */}
@@ -44,7 +44,7 @@ const Navigation = ({ hasRedAlerts }) => {
       {/* Desktop Sidebar Navigation */}
       <nav className={`${styles.desktopNav} desktop-only`}>
         <div className={styles.logoContainer}>
-          <KinLogo size="normal" showTagline={true} />
+          <KinLogo size="normal" showTagline={true} onClick={onLogoClick} />
         </div>
 
         {tabs.map((tab) => (
@@ -68,7 +68,7 @@ const Navigation = ({ hasRedAlerts }) => {
 
         <div className={styles.profileCard}>
           <div className={styles.profileName}>Manuel Rodríguez</div>
-          <div className={styles.profileStats}>Age: 78 • Stable</div>
+          <div className={styles.profileStats}>Edad: 78 • Estable</div>
         </div>
       </nav>
     </>

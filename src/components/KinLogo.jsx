@@ -2,11 +2,15 @@ import React from 'react';
 import logoImg from '../assets/logo kin.png';
 import styles from './KinLogo.module.css';
 
-const KinLogo = ({ size = 'normal', showTagline = false }) => {
+const KinLogo = ({ size = 'normal', showTagline = false, onClick }) => {
   const height = size === 'small' ? 24 : size === 'large' ? 48 : 32;
   
   return (
-    <div className={styles.container}>
+    <div 
+      className={styles.container} 
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
+    >
       <img 
         src={logoImg} 
         alt="Kin Logo" 

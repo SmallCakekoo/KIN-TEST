@@ -7,11 +7,11 @@ import styles from './Week.module.css';
 const Week = ({ data }) => (
   <div className={styles.container}>
     <h3 className={styles.sectionTitle}>
-      This week ({data.weeklySummary.period})
+      Esta semana ({data.weeklySummary.period})
     </h3>
     
     <div className={styles.chartCard}>
-      <div className={styles.chartHeader}>Medication Adherence</div>
+      <div className={styles.chartHeader}>Adherencia a la medicación</div>
       <div className={styles.chartContainer}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data.weeklySummary.medicationAdherence}>
@@ -37,10 +37,10 @@ const Week = ({ data }) => (
     </div>
 
     <div className={styles.statsGrid}>
-      <StatCard label="Avg Sleep" value={data.weeklySummary.stats.avgSleep} />
-      <StatCard label="Days Out" value={data.weeklySummary.stats.daysOut} />
-      <StatCard label="BP Readings" value={data.weeklySummary.stats.bpReadings} />
-      <StatCard label="Glucose" value={data.weeklySummary.stats.glucoseTrend.toUpperCase()} trend={data.weeklySummary.stats.glucoseTrend} />
+      <StatCard label="Sueño prom." value={data.weeklySummary.stats.avgSleep} />
+      <StatCard label="Días fuera" value={data.weeklySummary.stats.daysOut} />
+      <StatCard label="P. Arterial" value={data.weeklySummary.stats.bpReadings} />
+      <StatCard label="Glucosa" value={data.weeklySummary.stats.glucoseTrend === 'stable' ? 'ESTABLE' : 'INESTABLE'} trend={data.weeklySummary.stats.glucoseTrend} />
     </div>
 
     <div className={styles.divider} />
@@ -50,7 +50,7 @@ const Week = ({ data }) => (
         <div className={styles.insightIcon}>
           <CheckCircle size={14} color="white" />
         </div>
-        <span className={styles.insightTitle}>Weekly Insight</span>
+        <span className={styles.insightTitle}>Resumen semanal</span>
       </div>
       <p className={styles.insightText}>
         {data.weeklySummary.narrative}

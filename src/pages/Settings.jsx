@@ -45,9 +45,9 @@ const DeviceDetailModal = ({ device, onClose }) => {
 const Settings = ({ data }) => {
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [notifications, setNotifications] = useState([
-    { id: 1, label: 'Push notifications for red alerts', active: true },
-    { id: 2, label: 'Weekly WhatsApp summary', active: false },
-    { id: 3, label: 'Activity nudges', active: true }
+    { id: 1, label: 'Notificaciones push para alertas críticas', active: true },
+    { id: 2, label: 'Resumen semanal vía WhatsApp', active: false },
+    { id: 3, label: 'Recordatorios de actividad', active: true }
   ]);
 
   const toggleNotification = (id) => {
@@ -60,11 +60,11 @@ const Settings = ({ data }) => {
         <div className={styles.avatar}>MR</div>
         <div>
           <div className={styles.profileName}>{data.name}</div>
-          <div className={styles.profileMeta}>{data.age} years old • {data.doctor}</div>
+          <div className={styles.profileMeta}>{data.age} años</div>
         </div>
       </div>
 
-      <h3 className={styles.sectionTitle}>Notifications</h3>
+      <h3 className={styles.sectionTitle}>Notificaciones</h3>
       <div className={styles.listCard}>
         {notifications.map((item) => (
           <div key={item.id} className={styles.listItem}>
@@ -79,7 +79,7 @@ const Settings = ({ data }) => {
         ))}
       </div>
 
-      <h3 className={styles.sectionTitle}>Ecosystem</h3>
+      <h3 className={styles.sectionTitle}>Ecosistema</h3>
       <div className={styles.listCard}>
         {data.devices.map((device) => (
           <div 
@@ -97,7 +97,7 @@ const Settings = ({ data }) => {
                 className={styles.statusDot} 
                 style={{ backgroundColor: device.status === 'connected' ? 'var(--success)' : '#ccc' }} 
               />
-              <span className={styles.statusText}>{device.status.toUpperCase()}</span>
+              <span className={styles.statusText}>{device.status === 'connected' ? 'CONECTADO' : 'DESCONECTADO'}</span>
             </div>
           </div>
         ))}
@@ -105,7 +105,7 @@ const Settings = ({ data }) => {
 
       <button className={styles.reportButton}>
         <FileText size={20} />
-        Generate PDF report for doctor
+        Generar reporte PDF para el doctor
       </button>
 
       <div className={styles.footer}>

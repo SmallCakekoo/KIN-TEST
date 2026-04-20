@@ -12,13 +12,13 @@ const Home = ({ data }) => {
       {hasCriticalIssue && (
         <div className={styles.criticalAlert}>
           <Bell size={18} />
-          <span>Needs attention: {data.indicators.find(i => i.status === 'danger')?.name}</span>
+          <span>Atención necesaria: {data.indicators.find(i => i.status === 'danger')?.name}</span>
         </div>
       )}
       
       <div className={styles.heroCard}>
         <h1 className={styles.heroTitle}>
-          {hasCriticalIssue ? "Something needs your attention" : "Dad is doing well today"}
+          {hasCriticalIssue ? "Algo requiere tu atención" : "Tu padre está bien hoy"}
         </h1>
         <div className={styles.logoWatermark}>
           <KinLogo size="large" />
@@ -33,7 +33,7 @@ const Home = ({ data }) => {
 
       <button className={styles.callButton}>
         <Phone size={20} fill="white" />
-        <span>Call Dad</span>
+        <span>Llamar a papá</span>
       </button>
     </div>
   );
