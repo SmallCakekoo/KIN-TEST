@@ -109,7 +109,7 @@ export default function App() {
           forceOpen={showDemoPanel}
         />
       )}
- Riverside:
+ 
       {/* Mobile Header */}
       <div className="mobile-only" style={{ filter: showNarrative ? 'blur(4px)' : 'none', transition: 'filter 0.3s ease' }}>
         <Header title={getHeaderTitle()} showDate={activeTab === "home"} onLogoClick={toggleDemoPanel} />
